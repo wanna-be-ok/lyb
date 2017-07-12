@@ -1,0 +1,12 @@
+/*清除默认margin和padding*/
+body,div,h1,h2,h3,h4,h5,h6,p,ul,ol,dl,dt,dd,li,form,input,table,hr,pre{padding:0;margin:0;}
+/*设置默认*/
+body{font-family: "Microsoft Yahei", serif;}
+img,input{border:none;}
+li{list-style-type: none;}
+a{text-decoration: none;color:black;}
+input,select,textarea{outline: none;background:none;}
+
+/*清除浮动*/
+.clearfix:after{content: "";display: block;clear:both;}
+.clearfix{zoom: 1;}

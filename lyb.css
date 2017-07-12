@@ -1,0 +1,146 @@
+html{
+    font-size: 12px;
+}
+img{
+    width: 7.5rem;
+    height: 9rem;
+    display: block;
+    margin:0 auto;
+}
+h2{
+    font-size: 2.4rem;
+    text-align: center;
+    margin-top: 2rem ;
+    margin-bottom: 3.5rem ;
+}
+#liuyan{
+    width: 60rem;
+    border: 1px solid black;
+    margin: 0 auto;
+}
+.head{
+    width: 40rem;
+    margin-left: 20rem ;
+
+}
+h4{
+    text-align: center;
+    font-size: 1.5rem;
+}
+.lf{
+    border: 1px solid black;
+    width: 15.5rem;
+    height: 15rem;
+    float: left;
+    margin: 0.5rem;
+}
+.mz{
+    font-size: 1.3rem;
+    font-weight: 800;
+    text-align: center;
+}
+.qm{
+    text-align: center;
+}
+.rg{
+    border: 1px solid black;
+    height: 15rem;
+    width: 42rem;
+    float: left;
+    margin: 0.5rem;
+}
+.rg_n{
+    padding: 1rem;
+    height: 10.5rem;
+}
+.time{
+    display: block;
+    background: gray;
+    width: 16.3rem;
+    padding: 0.3rem;
+    float: right;
+    color: #ffffff;
+    border-radius: 1rem;
+    margin-right: 0.8rem;
+}
+.c{
+    padding-bottom: 3rem;
+}
+#neirong{
+    width: 58rem;
+    border: 1px solid black;
+    padding: 1rem;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
+textarea{
+    resize:none;
+}
+.name_img{
+    width: 22rem;
+    position: relative;
+    float: left;
+    border: none;
+}
+#btn1,#btn2{
+    background: #777777;
+    color: #ffffff;
+    width: 5rem;
+    height: 2.5rem;
+    font-size: 1.5rem;
+    border-radius: 0.5rem;
+}
+#btn1:hover{
+    cursor: pointer;
+    background: steelblue;
+}
+#btn2:hover{
+    cursor: pointer;
+    background: steelblue;
+}
+.tou img{
+    border: 1px solid #333;
+    position:absolute;
+    right: 1rem;
+    top: .5rem;
+}
+.ming{
+    margin-bottom: .5rem ;
+}
+.qian{
+    margin-bottom: .5rem ;
+}
+#btn1{
+    margin-top: .3rem;
+    margin-left: 15rem;
+}
+.text{
+    border: none;
+}
+#bio{
+    width: 32rem;
+}
+#btn2{
+    margin-left: 50rem;
+}
+#xl {
+    border: 1px solid black;
+    width: 59rem;
+    height: 2rem;
+    padding: .5rem;
+    margin: 0 auto;
+    margin-top: 1rem;
+
+}
+#xl ul{
+    text-align: center;
+}
+#xl ul li{
+    display: inline-block;
+    color: blue;
+    margin-right: .3rem;
+    margin-left: .2rem;
+}
+#xl ul li:hover{
+    cursor: pointer;
+}

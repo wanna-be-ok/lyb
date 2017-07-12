@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="reset.css" type="text/css">
+    <link rel="stylesheet" href="lyb.css" type="text/css">
+    <title></title>
+</head>
+<body>
+<h2>这是一个留言板</h2>
+<div id="liuyan">
+    <div class="head">
+        <h4>留言内容</h4>
+    </div>
+    <div class="rq" id="fz">
+        <div class="c clearfix" id="zong">
+            <div class="lf">
+                <img src="qie.jpg">
+                <p class="mz">name</p>
+                <p class="qm">这里是签名</p>
+            </div>
+            <div class="rg">
+                <div class="rg_n">
+                    <p>这里是内容。这里是内容。这里是内容。这里是内容。这里是内容。这里是内容。</p>
+                </div>
+                <span class="time">留言时间：2017年7月10日18:18:32</span>
+            </div>
+            <div class="lf">
+                <img src="6.jpg">
+                <p class="mz">name</p>
+                <p class="qm">这里是签名</p>
+            </div>
+            <div class="rg">
+                <div class="rg_n">
+                    <p>这里是内容。这里是内容。这里是内容。这里是内容。这里是内容。这里是内容。</p>
+                </div>
+                <span class="time">留言时间：2017年7月10日18:18:32</span>
+            </div>
+            <div class="lf">
+                <img src="taidi.jpg">
+                <p class="mz">name</p>
+                <p class="qm">这里是签名</p>
+            </div>
+            <div class="rg">
+                <div class="rg_n">
+                    <p>这里是内容。这里是内容。这里是内容。这里是内容。这里是内容。这里是内容。</p>
+                </div>
+                <span class="time">留言时间：2017年7月10日18:18:32</span>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<div id="xl">
+    <ul>
+        <li>1</li>
+    </ul>
+</div>
+<div id="neirong">
+    <form method="post">
+        <fieldset class="name_img">
+            <h3>请填写下面内容</h3>
+            <p class="ming">
+                <label for="name">name：</label>
+                <input type="text" id="name" name="name" placeholder="名字最多六字" maxlength="6" size="30" required="required" />
+            </p>
+           <p class="qian">
+               <label for="qm">签名：</label>
+               <input type="text" id="qm" name="qm" placeholder="签名十二个字" maxlength="12" size="30">
+           </p>
+            <p class="tou">
+                <label for="img">头像</label>
+                <select id="img" name="img">
+                    <option value="qie.jpg" selected>企鹅</option>
+                    <option value="6.jpg" >大象</option>
+                    <option value="taidi.jpg">泰迪熊</option>
+                </select>
+                <img src="qie.jpg" id="xg">
+            </p>
+            <p><input type="submit" id="btn1" value="提交"></p>
+
+        </fieldset>
+        <fieldset class="text">
+            <textarea id="bio" name="bio" cols="45" rows="10" placeholder="最多可以输入160字" maxlength="160" ></textarea>
+        </fieldset>
+        <p><input type="submit" id="btn2" value="发布"></p>
+    </form>
+</div>
+<script>
+    var Dx=document.getElementById('btn1');
+    var sel,name,qm,btn2,text,zong,num,js;
+    var arr= new Array();
+    var al=new Array();
+    num = 0;
+    js=0;
+    sel=document.getElementById('img');
+    name=document.getElementById('name');
+    qm=document.getElementById('qm');
+    btn2=document.getElementById('btn2');
+    text=document.getElementById('bio');
+//全局函数有些多，很糙，有时间加精
+
+    Dx.onclick=function(event){
+        //获取一些输入的数据
+        event.preventDefault();
+        num ++;
+        var selv=document.getElementById('img').value;
+        var namev=document.getElementById('name').value;
+       var qmv=document.getElementById('qm').value;
+        var bh=document.getElementById('xg');
+        var textv=document.getElementById('bio').value;
+        var t=new Date();
+        var me=t.toLocaleDateString();
+        var ime= t.toLocaleTimeString();
+        var time=me+" "+ime;
+        arr=[namev,selv,qmv,textv,time];
+        al[num]=arr;
+        //想做一个sql存储机制，所以新建了一个数组包含另一个数组，每次提交都会有个新arr被保存在al中。以后会补全
+        bh.setAttribute('src',selv);
+        if(namev===""){
+            alert('请填写姓名');
+            return false;
+        }
+
+
+    };
+    btn2.onclick=function(e){
+//这个zong有点问题，js每次在else运行的时候都会加一，zong的捕获目标就变成新的div，如果只初始化zong在使用之前只会捕获【0】的子元素，所以每个函数内我都初始化了，相信以后可以解决
+        zong=document.getElementById('fz').children[js];
+        e.preventDefault();
+        if(arr[0]===''){
+            alert('please show your name');
+            return;
+        }
+       var ch=zong.children.length;
+        if(ch<=10){
+           sav();
+
+
+        } else {
+
+            zong.style.display='none';
+            js++;
+            var ne=document.createElement('div');
+            ne.setAttribute('class','c clearfix');
+            document.getElementById('fz').appendChild(ne);
+            sav();
+            if(js<5){
+                var ss=js+1;
+                var li=document.createElement('li');
+                var lit=document.createTextNode(ss);
+                li.appendChild(lit);
+                document.getElementById('xl').children[0].appendChild(li);
+            }else{
+                //当页标超过五个就会变成如下这种形式
+                var pp="";
+                pp+='<li>1</li>';
+                pp+='<li>2</li>';
+                pp+='....';
+                document.getElementById('xl').children[0].innerHTML=pp;
+                 ss=js+1;
+                 li=document.createElement('li');
+                 lit=document.createTextNode(ss);
+                li.appendChild(lit);
+                document.getElementById('xl').children[0].appendChild(li);
+
+            }
+        }
+
+    };
+    function sav(){
+        //创建新div。
+        zong=document.getElementById('fz').children[js];
+        var ndl=document.createElement('div');
+        var ndli=document.createElement('img');
+        var ndlm=document.createElement('p');
+        var ndlq=document.createElement('p');
+        ndl.setAttribute('class','lf');
+        ndli.setAttribute('src',arr[1]);
+        ndlm.setAttribute('class','mz');
+        var textm=document.createTextNode(arr[0]);
+        ndlm.appendChild(textm);
+        ndlq.setAttribute('class','qm');
+        var textq=document.createTextNode(arr[2]);
+        ndlq.appendChild(textq);
+        ndl.appendChild(ndli);
+        ndl.appendChild(ndlm);
+        ndl.appendChild(ndlq);
+
+        var ndrd=document.createElement('div');
+        var ndrd2=document.createElement('div');
+        var ndrp=document.createElement('p');
+        var bdrsp=document.createElement('span');
+        ndrd.setAttribute('class','rg');
+        ndrd2.setAttribute('class','rg_n');
+        bdrsp.setAttribute('class','time');
+        var textndrp=document.createTextNode(arr[3]);
+        ndrp.appendChild(textndrp);
+        var textspan=document.createTextNode('留言时间：'+arr[4]);
+        bdrsp.appendChild(textspan);
+        ndrd2.appendChild(ndrp);
+        ndrd.appendChild(ndrd2);
+        ndrd.appendChild(bdrsp);
+        zong.appendChild(ndl);
+        zong.appendChild(ndrd);
+    }
+   //还缺少两个功能，一个是下面的导航，一个是不关闭浏览器的存储功能
+
+</script>
+</body>
+</html>
