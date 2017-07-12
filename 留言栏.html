@@ -54,7 +54,7 @@
 </div>
 <div id="xl">
     <ul>
-        <li>1</li>
+        <li class="1">1</li>
     </ul>
 </div>
 <div id="neirong">
@@ -140,27 +140,29 @@
 
         } else {
 
-            zong.style.display='none';
+            zong.setAttribute('class','c clearfix yc');
             js++;
             var ne=document.createElement('div');
-            ne.setAttribute('class','c clearfix');
+            ne.setAttribute('class','c clearfix xs');
             document.getElementById('fz').appendChild(ne);
             sav();
             if(js<5){
                 var ss=js+1;
                 var li=document.createElement('li');
+                li.setAttribute('class',ss);
                 var lit=document.createTextNode(ss);
                 li.appendChild(lit);
                 document.getElementById('xl').children[0].appendChild(li);
             }else{
                 //当页标超过五个就会变成如下这种形式
                 var pp="";
-                pp+='<li>1</li>';
-                pp+='<li>2</li>';
+                pp+='<li class="1">1</li>';
+                pp+='<li class="2">2</li>';
                 pp+='....';
                 document.getElementById('xl').children[0].innerHTML=pp;
                  ss=js+1;
                  li=document.createElement('li');
+                 li.setAttribute('class',ss);
                  lit=document.createTextNode(ss);
                 li.appendChild(lit);
                 document.getElementById('xl').children[0].appendChild(li);
@@ -169,6 +171,26 @@
         }
 
     };
+    //这一段属于事件委托，即捕获的一个过程，通过通过绑定父元素事件，识别触发元素是哪一个子元素 咳咳 event。target  和 event。srcElement 需要记住
+    var oUl = document.getElementById("xl").children[0];
+    var aLi = oUl.getElementsByTagName("li");
+    oUl.onclick  = function(ev){
+        var eoav = ev || window.event;
+        var target = eoav.target || eoav.srcElement;
+
+       var dh= target.getAttribute('class');
+
+
+        if(target.nodeName.toLowerCase() == "li"){
+            var zb=document.getElementsByClassName('xs')[0];
+            zb.setAttribute('class','c clearfix yc');
+           var zx= document.getElementById('fz').children[dh-1].setAttribute('class','c clearfix xs');
+        }
+    };
+
+
+
+
     function sav(){
         //创建新div。
         zong=document.getElementById('fz').children[js];
